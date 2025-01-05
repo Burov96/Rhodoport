@@ -25,7 +25,7 @@ export default async function CategoryPage({ params }: PageProps) {
   try {
     const { category } = await params;
 
-    const res = await fetch(`http://localhost:3000/api/businesses?category=${category}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/businesses?category=${category}`, {
       cache: 'no-store',
     });
 

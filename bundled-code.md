@@ -309,7 +309,7 @@ export default async function CategoryPage({ params }: PageProps) {
     // Await the params as required by Next.js 15’s dynamic route typing
     const { category } = await params;
 
-    const res = await fetch(`http://localhost:3000/api/businesses?category=${category}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/businesses?category=${category}`, {
       cache: 'no-store',
     });
 
@@ -581,7 +581,7 @@ interface Business {
 }
 
 async function getFeaturedBusinesses() {
-  const res = await fetch('http://localhost:3000/api/businesses/featured', {
+  const res = await fetch('${process.env.NEXT_PUBLIC_APP_URL}/api/businesses/featured', {
     cache: 'no-store'
   });
   if (!res.ok) throw new Error('Failed to fetch featured businesses');
@@ -589,7 +589,7 @@ async function getFeaturedBusinesses() {
 }
 
 async function getTopCategories() {
-  const res = await fetch('http://localhost:3000/api/categories/top', {
+  const res = await fetch('${process.env.NEXT_PUBLIC_APP_URL}/api/categories/top', {
     cache: 'no-store'
   });
   if (!res.ok) throw new Error('Failed to fetch top categories');
