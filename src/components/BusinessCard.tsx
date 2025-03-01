@@ -11,7 +11,7 @@ interface Hours {
 interface BusinessData {
   id: number;
   name: string;
-  slug: string;
+  slug?: string;
   description: string;
   category_id: number;
   address: string;
