@@ -16,12 +16,18 @@ type Business = {
     suggestionsOnly?: boolean
   }
   
+  type BusinessSuggestion = {
+    id: string
+    name: string
+    category: string
+  }
+  
   // This function would connect to your database
   // Replace with your actual data fetching logic
   export async function searchBusinesses(
     query: string, 
-    options: { page?: number, limit?: number, suggestionsOnly?: boolean }
-  ): Promise<{ businesses: Business[], total: number }> {
+    options: SearchOptions = {}
+  ): Promise<{ businesses: (Business | Pick<Business, 'id' | 'name' | 'category'>)[], total: number }> {
     const { 
       page = 1, 
       limit = 10, 
@@ -65,13 +71,19 @@ type Business = {
       )
       
       if (suggestionsOnly) {
-        // For suggestions, just return simplified business objects
-        return filteredBusinesses.slice(0, limit).map(business => ({
+        // For suggestions, wrap the simplified objects in the expected format
+        const simplifiedBusinesses = filteredBusinesses.slice(0, limit).map(business => ({
           id: business.id,
           name: business.name,
           category: business.category
-        }))
+        }));
+        
+        return {
+          businesses: simplifiedBusinesses,
+          total: filteredBusinesses.length
+        };
       }
+      
       
       // For full search, return paginated results
       const startIndex = (page - 1) * limit
