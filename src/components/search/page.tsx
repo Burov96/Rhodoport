@@ -49,7 +49,7 @@ function SearchPagination({
   totalPages: number;
   query: string;
 }) {
-  const pathname = usePathname ? usePathname() : '';
+  const pathname =  usePathname();
   
   // Generate page numbers to display
   const getPageNumbers = () => {
