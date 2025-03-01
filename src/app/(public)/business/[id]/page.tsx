@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
-import BusinessCard from "@/components/BusinessCard"
+import BusinessCard from "../../../../components/BusinessCard"
 
 export default function Page() {
   const params = useParams()

@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import SearchComponent from '../components/search/SearchComponent'
+import CodeComponent from '../components/search/CodeComponent'
+import React from 'react';
 
 interface Category {
   id: number;
@@ -56,23 +59,8 @@ export default async function Home() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
             Find and connect with local businesses, services, and experiences in your neighborhood
           </p>
-          <div className="w-full max-w-3xl bg-white/10 backdrop-blur-md p-2 rounded-xl">
-            <div className="flex flex-col md:flex-row gap-4">
-              <input
-                type="text"
-                placeholder="What are you looking for?"
-                className="flex-1 px-6 py-4 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <input
-                type="text"
-                placeholder="Location"
-                className="flex-1 px-6 py-4 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button className="bg-blue-600 hover:bg-blue-700 text-black px-8 py-4 rounded-lg transition-colors duration-200">
-                Search
-              </button>
-            </div>
-          </div>
+<SearchComponent />
+{/* <CodeComponent /> */}
         </div>
       </section>
 
