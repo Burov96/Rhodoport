@@ -20,8 +20,8 @@ type Business = {
   // Replace with your actual data fetching logic
   export async function searchBusinesses(
     query: string, 
-    options: SearchOptions = {}
-  ): Promise<{ businesses: Business[], total: number } | Business[]> {
+    options: { page?: number, limit?: number, suggestionsOnly?: boolean }
+  ): Promise<{ businesses: Business[], total: number }> {
     const { 
       page = 1, 
       limit = 10, 
