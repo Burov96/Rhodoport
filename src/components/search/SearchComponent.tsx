@@ -6,6 +6,11 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import React from 'react'
 
+interface SearchResult {
+  id: number;
+  name: string;
+  description: string;
+}
 const searchSchema = z.object({
   query: z.string().min(2).max(50),
 })
