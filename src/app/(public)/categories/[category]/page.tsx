@@ -12,7 +12,7 @@ interface Business {
   image_url: string;
   latitude: number;
   longitude: number;
-  rating: string;
+  rating: number;
   review_count: number;
   created_at: string;
 }
