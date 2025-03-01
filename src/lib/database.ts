@@ -1,4 +1,3 @@
-// app/lib/database.ts
 import pool from './db'
 
 export interface Business {
@@ -12,6 +11,17 @@ export interface Business {
   }
   working_hours?: string
   created_at: Date
+}
+
+interface DatabaseRow {
+  id: number
+  name: string
+  description: string
+  address: string
+  phone: string | null
+  category_name: string
+  working_hours: string | null
+  created_at: string | Date
 }
 
 export async function searchDatabase(query: string): Promise<Business[]> {
@@ -37,14 +47,14 @@ export async function searchDatabase(query: string): Promise<Business[]> {
       [`+${query.split(' ').join('* +')}*`]
     )
 
-    return (results as any[]).map(row => ({
+    return (results as DatabaseRow[]).map(row => ({
       id: row.id,
       name: row.name,
       description: row.description,
       address: row.address,
-      phone: row.phone,
+      phone: row.phone || undefined,
       category: { name: row.category_name },
-      working_hours: row.working_hours,
+      working_hours: row.working_hours || undefined,
       created_at: new Date(row.created_at)
     }))
   } catch (error) {

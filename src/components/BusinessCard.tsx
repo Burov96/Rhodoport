@@ -43,7 +43,7 @@ export default function BusinessCard({ business }: { business: BusinessData }) {
 
       const [openTime, closeTime] = todayHours.split(" - ").map((time) => {
         const [hourMin, period] = time.split(" ");
-        let [hour, minute] = hourMin.split(":").map(Number);
+        const [hour, minute] = hourMin.split(":").map(Number);
         if (period === "PM" && hour !== 12) hour += 12;
         if (period === "AM" && hour === 12) hour = 0;
         return `${hour.toString().padStart(2, "0")}:${minute

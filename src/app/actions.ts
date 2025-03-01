@@ -1,6 +1,5 @@
 'use server'
 
-import { revalidatePath } from 'next/cache';
 
 export async function searchBusinesses(prevState: any, formData: FormData) {
   const query = formData.get('query') as string;
@@ -28,6 +27,7 @@ export async function searchBusinesses(prevState: any, formData: FormData) {
       message: ''
     };
   } catch (error) {
+    console.log(error)
     return {
       results: [],
       message: 'An error occurred while searching'

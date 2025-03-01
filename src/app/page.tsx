@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import SearchComponent from '../components/search/SearchComponent'
-import CodeComponent from '../components/search/CodeComponent'
 import React from 'react';
 
 interface Category {
